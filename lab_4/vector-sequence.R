@@ -1,0 +1,8 @@
+#!/usr/bin/Rscript
+
+print('Sequence of numbers from 20 to 50:')
+print(seq(20, 50))
+print("Mean of numbers from 20 to 60:")
+print(mean(seq(20, 60)))
+print("Sum of numbers from 51 to 91:")
+print(sum(seq(51, 91)))
