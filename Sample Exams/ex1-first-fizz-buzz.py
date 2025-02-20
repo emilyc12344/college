@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+
+a = True
+while a:
+    n = int(input())
+    if n % 3 == 0 and n % 5 == 0:
+        print(n)
+        a = False
