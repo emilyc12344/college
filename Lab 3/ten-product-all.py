@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+
+i = 0
+n = 10
+tot = 1
+
+while i < n:
+    a = int(input())
+    tot *= a
+    i += 1
+
+print(tot)
