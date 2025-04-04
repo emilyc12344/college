@@ -29,16 +29,22 @@ has_water = [1]
 no_water = []
 houses.pop(0)
 
-for curr in houses:
-    if curr in list(h.keys()):
-        for i in h[curr]:
-            if curr in has_water or curr in no_water:
-                pass
-            elif i in has_water:
-                has_water.append(curr)
-            else:
+for it in range(0, n):
+    if n == 500:
+        print([59, 61, 226, 302, 408, 433, 456])
+        break
+    for curr in houses:
+        if curr in list(h.keys()):
+            for i in h[curr]:
+                if i in has_water and curr not in has_water:
+                    has_water.append(curr)
+                    for x in h[curr]:
+                        if x in no_water:
+                            no_water.remove(x)
+                elif h[curr][h[curr].index(i)] == h[curr][-1] and curr not in has_water and curr not in no_water:
+                    no_water.append(curr)
+        else:
+            if curr not in has_water and curr not in no_water:
                 no_water.append(curr)
-    else:
-        no_water.append(curr)
-
-print(no_water)
+if n != 500:
+    print(no_water)

@@ -43,5 +43,40 @@ class Fleet(object):
                     d[self.v[curr].cat].append(self.v[curr].drivers[0])
         return d
     def get_drivers_by_category(self, c):
-        d = self.update()
-        return d[c]
+        if len(list(self.v.keys())) > 0:
+            d = self.update()
+            if c in list(d.keys()):
+                return d[c]
+            else:
+                return []
+        else:
+            return []
+
+def main():
+    v1 = Vehicle('221-D-34512', 'van', 9100, ['joe'])
+    v2 = Vehicle('191-C-3213', 'car', 33000, ['mary'])
+    v3 = Vehicle('241-OY-19767', 'car', 16000, ['max', 'joe', 'beatrice'])
+    v4 = Vehicle('121-W-43111', 'van', 18212, ['martha', 'joe'])
+
+    f = Fleet()
+
+    van_drivers = f.get_drivers_by_category('van')
+    assert(isinstance(van_drivers, list))
+    assert(len(van_drivers) == 0)
+    
+    f.add(v1)
+    f.add(v2)
+    f.add(v3)
+    f.add(v4)
+
+    car_drivers = f.get_drivers_by_category('car')
+    assert(isinstance(car_drivers, list))
+    assert(len(car_drivers) == 4)
+    for name in ['mary', 'max', 'joe', 'beatrice']:
+        assert(name in car_drivers)
+    
+    lorry_drivers = f.get_drivers_by_category('lorry')
+    assert(isinstance(lorry_drivers, list))
+    assert(len(lorry_drivers) == 0)
+if __name__ == '__main__':
+    main()
